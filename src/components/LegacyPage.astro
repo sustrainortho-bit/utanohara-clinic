@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { legacyDescriptions, legacyParents } from '../config/seo';
+import { clinicJsonLd } from '../lib/clinic-ld';
+import { rewriteBase, url } from '../lib/site';
+
+// 現行サイト（2026-09-20時点）から移行した本文HTML。文言は流用のまま、構造・リンク・画像パスのみ整理している。
+const fragments = import.meta.glob('../legacy/**/*.html', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+
+interface Props { page: any }
+const { page } = Astro.props;
+let body = fragments[`../legacy/${page.slug}.html`];
+let heading = page.heading;
+
+// 活動報告の個別ページは、本文先頭のh3を見出し（h1）に昇格する
+if (page.slug.startsWith('report/detail_')) {
+  const m = body.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+  if (m) {
+    heading = m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    body = body.replace(m[0], '');
+  }
+}
+
+const first = page.slug.split('/')[0];
+const parent = legacyParents[first];
+const isIndex = page.slug.endsWith('/index');
+const crumbs = [
+  ...(parent && !(first === 'report' && isIndex) ? [parent] : []),
+  { label: heading },
+];
+const description =
+  legacyDescriptions[page.slug] ??
+  `${heading}。うたのはら整形外科クリニック（東広島市西条寺家）のスタッフ活動報告です。`;
+const title = first === 'service' ? `${heading}（東広島市）` : heading;
+const isAccess = page.slug === 'access/index';
+---
+<BaseLayout
+  title={title}
+  description={description}
+  path={page.url}
+  breadcrumbs={crumbs}
+  jsonLd={isAccess ? [clinicJsonLd()] : []}
+  ogImage={undefined}
+>
+  <div class="page-head">
+    <div class="wrap">
+      {page.en && <span class="en">{page.en}</span>}
+      <h1>{heading}</h1>
+    </div>
+  </div>
+  {page.hero && (
+    <p class="mainvisual"><img src={url(page.hero.src)} width={page.hero.width} height={page.hero.height} alt="" /></p>
+  )}
+  <div class="legacy" set:html={rewriteBase(body)} />
+</BaseLayout>

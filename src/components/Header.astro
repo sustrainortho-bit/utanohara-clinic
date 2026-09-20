@@ -1,0 +1,48 @@
+---
+import { clinic, mainNav, features } from '../config/site';
+import { url, showDrafts } from '../lib/site';
+import { img } from '../lib/images';
+
+const logo = img('common/logo.svg');
+const visible = <T extends { draft?: boolean }>(list: T[]) => list.filter((n) => !n.draft || showDrafts);
+const nav = mainNav
+  .filter((n) => features.diseases || n.href !== '/disease/')
+  .map((n) => ({ ...n, children: n.children && visible(n.children) }));
+---
+<header class="site-header">
+  <div class="header-top wrap">
+    <p class="brand">
+      <a href={url('/')}><img src={logo.src} width={logo.width} height={logo.height} alt={clinic.name} /></a>
+    </p>
+    <p class="header-desc">{clinic.shortDescription}</p>
+    <ul class="header-tel">
+      <li><a href={`tel:${clinic.tel}`}>{clinic.tel}</a><small>（代表）</small></li>
+      <li><a href={`tel:${clinic.telRehab}`}>{clinic.telRehab}</a><small>（運動療法予約専用）</small></li>
+    </ul>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="global-nav">メニュー</button>
+  </div>
+  <nav class="global-nav" id="global-nav" aria-label="メインメニュー">
+    <ul>
+      {nav.map((item) => (
+        <li>
+          <a class="nav-link" href={url(item.href)}>
+            {item.en && <span class="en">{item.en}</span>}{item.label}
+          </a>
+          {item.children && (
+            <ul class="sub">
+              {item.children.map((c) => <li><a href={url(c.href)}>{c.label}</a></li>)}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const nav = document.getElementById('global-nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('is-open') ?? false;
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>

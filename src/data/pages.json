@@ -1,0 +1,229 @@
+[
+  {
+    "slug": "about/index",
+    "url": "/about/",
+    "title": "クリニックについて",
+    "heading": "クリニックについて",
+    "en": "ABOUT",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/about/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "access/index",
+    "url": "/access/",
+    "title": "アクセス",
+    "heading": "アクセス",
+    "en": "ACCESS",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/access/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "equipment/index",
+    "url": "/equipment/",
+    "title": "設備のご紹介",
+    "heading": "設備のご紹介",
+    "en": "EQUIPMENT",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/equipment/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "news/index",
+    "url": "/news/",
+    "title": "お知らせ",
+    "heading": "クリニックからのお知らせ",
+    "en": "NEWS",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/news/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "news2/index",
+    "url": "/news2/",
+    "title": "休診案内",
+    "heading": "休診案内",
+    "en": "NEWS",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/news2/mainvisual.webp",
+      "width": 1600,
+      "height": 647
+    }
+  },
+  {
+    "slug": "news3/index",
+    "url": "/news3/",
+    "title": "採用情報",
+    "heading": "採用情報",
+    "en": "NEWS",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/news3/mainvisual.webp",
+      "width": 1600,
+      "height": 647
+    }
+  },
+  {
+    "slug": "privacy/index",
+    "url": "/privacy/",
+    "title": "プライバシーポリシー",
+    "heading": "プライバシーポリシー",
+    "en": "PRIVACY POLICY",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/privacy/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "report/detail_01",
+    "url": "/report/detail_01.html",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": null
+  },
+  {
+    "slug": "report/detail_02",
+    "url": "/report/detail_02.html",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": null
+  },
+  {
+    "slug": "report/detail_03",
+    "url": "/report/detail_03.html",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": null
+  },
+  {
+    "slug": "report/detail_04",
+    "url": "/report/detail_04.html",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": null
+  },
+  {
+    "slug": "report/detail_05",
+    "url": "/report/detail_05.html",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": null
+  },
+  {
+    "slug": "report/index",
+    "url": "/report/",
+    "title": "スタッフ活動報告",
+    "heading": "スタッフ活動報告",
+    "en": "REPORT",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/report/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "service/acp-prp",
+    "url": "/service/acp-prp.html",
+    "title": "膝の再生療法（ACP PRP療法）",
+    "heading": "膝の再生療法（ACP PRP療法）",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/acp-prp/mainvisual.webp",
+      "width": 1600,
+      "height": 647
+    }
+  },
+  {
+    "slug": "service/course",
+    "url": "/service/course.html",
+    "title": "産前産後のリハビリテーション",
+    "heading": "産前産後のリハビリテーション",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/course/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "service/kotsusoshosho",
+    "url": "/service/kotsusoshosho.html",
+    "title": "骨粗鬆症治療",
+    "heading": "骨粗鬆症治療",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/kotsusoshosho/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "service/rehabilitation",
+    "url": "/service/rehabilitation.html",
+    "title": "リハビリテーション科",
+    "heading": "リハビリテーション科",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/rehabilitation/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "service/seikeigeka",
+    "url": "/service/seikeigeka.html",
+    "title": "整形外科一般",
+    "heading": "整形外科一般",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/seikeigeka/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  },
+  {
+    "slug": "service/sports-seitaigeka",
+    "url": "/service/sports-seitaigeka.html",
+    "title": "スポーツ整体外科",
+    "heading": "スポーツ整形外科",
+    "en": "SERVICE",
+    "description": "2018年4月に東広島市西条寺家に新規開院する、うたのはら整形外科クリニックです。整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。",
+    "hero": {
+      "src": "/img/service/sports-seitaigeka/mainvisual.webp",
+      "width": 1360,
+      "height": 550
+    }
+  }
+]

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HoursTable from '../../components/HoursTable.astro';
+import { clinic, doctors } from '../../config/site';
+import { SITE_NAME, absUrl, url } from '../../lib/site';
+
+const physicianLd = doctors.map((d) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Physician',
+  '@id': absUrl(`/doctors/#${d.id}`),
+  name: d.name.replace(' ', ''),
+  jobTitle: d.role,
+  medicalSpecialty: ['Orthopedic'],
+  hasCredential: d.qualifications.map((q) => ({ '@type': 'EducationalOccupationalCredential', name: q })),
+  worksFor: { '@type': 'MedicalClinic', '@id': absUrl('/#clinic'), name: SITE_NAME },
+  url: absUrl('/doctors/'),
+}));
+---
+<BaseLayout
+  title="医師のご紹介"
+  description="うたのはら整形外科クリニックの医師のご紹介。院長・歌野原慎一、副院長・岡田康平の資格と、診療担当表。東広島市西条寺家の整形外科。"
+  path="/doctors/"
+  breadcrumbs={[{ label: '医師のご紹介' }]}
+  jsonLd={physicianLd}
+>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="en">Doctors</span>
+      <h1>医師のご紹介</h1>
+    </div>
+  </div>
+  <div class="article">
+    {doctors.map((d) => (
+      <section id={d.id} aria-labelledby={`h-${d.id}`}>
+        <h2 id={`h-${d.id}`}>{d.role}　{d.name}<small>（{d.kana}）</small></h2>
+        <ul>{d.qualifications.map((q) => <li>{q}</li>)}</ul>
+      </section>
+    ))}
+    <p>経歴やごあいさつは、<a href={url('/about/')}>クリニックについて</a>のページをご覧ください。</p>
+    <h2>診療担当表</h2>
+    <HoursTable kind="schedule" caption="診療担当表（医師の担当）" />
+    <p class="hours-note">診療担当は変更になることがあります。最新の休診・担当の変更は<a href={url('/news2/')}>休診案内</a>をご確認ください。</p>
+    <p class="article-meta">{clinic.name}｜{clinic.address}｜<a href={`tel:${clinic.tel}`}>{clinic.tel}</a></p>
+  </div>
+</BaseLayout>

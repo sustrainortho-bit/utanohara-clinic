@@ -1,0 +1,98 @@
+---
+import '@fontsource/noto-sans-jp/400.css';
+import '@fontsource/noto-sans-jp/700.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { clinic } from '../config/site';
+import { SITE_NAME, absUrl, isNoindex, showDrafts, url } from '../lib/site';
+import { img } from '../lib/images';
+
+export interface Crumb { label: string; href?: string }
+interface Props {
+  title: string;
+  description: string;
+  /** サイト内のパス（例: '/service/seikeigeka.html'）。canonical・OGPに使う */
+  path: string;
+  /** トップページのみtrue（titleに屋号を重ねない） */
+  isHome?: boolean;
+  breadcrumbs?: Crumb[];
+  /** 追加の構造化データ（JSON-LD） */
+  jsonLd?: Record<string, unknown>[];
+  /** 未監修（下書き）のページか。確認用ビルドでは注意帯を表示する */
+  draft?: boolean;
+  ogImage?: string;
+}
+const { title, description, path, isHome = false, breadcrumbs = [], jsonLd = [], draft = false, ogImage } = Astro.props;
+
+const fullTitle = isHome ? `${SITE_NAME}｜${clinic.shortDescription}` : `${title}｜${SITE_NAME}`;
+const canonical = absUrl(path);
+const og = img(ogImage ?? 'home/slider_01.jpg');
+const ogUrl = new URL(og.src, import.meta.env.SITE).href;
+
+const crumbs: Crumb[] = isHome ? [] : [{ label: 'ホーム', href: '/' }, ...breadcrumbs];
+const breadcrumbLd = crumbs.length > 1 && {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    item: c.href ? absUrl(c.href) : canonical,
+  })),
+};
+const websiteLd = isHome && {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE_NAME,
+  url: absUrl('/'),
+  inLanguage: 'ja',
+};
+const allLd = [websiteLd, breadcrumbLd, ...jsonLd].filter(Boolean);
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {isNoindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="theme-color" content="#008545" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href={url('/favicon.ico')} sizes="any" />
+    <meta property="og:type" content={isHome ? 'website' : 'article'} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {allLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">本文へ移動</a>
+    {draft && showDrafts && (
+      <div class="draft-banner" role="note">
+        【未監修（下書き）】このページは担当医の確認前の下書きです。「要確認」の項目は仮の内容で、公開前に差し替えます。
+      </div>
+    )}
+    <Header />
+    {crumbs.length > 1 && (
+      <nav class="breadcrumb wrap" aria-label="パンくずリスト">
+        <ol>
+          {crumbs.map((c, i) => (
+            <li>{c.href && i < crumbs.length - 1 ? <a href={url(c.href)}>{c.label}</a> : <span aria-current="page">{c.label}</span>}</li>
+          ))}
+        </ol>
+      </nav>
+    )}
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

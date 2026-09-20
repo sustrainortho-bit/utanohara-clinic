@@ -1,0 +1,467 @@
+{
+  "about/img_01.png": {
+    "src": "/img/about/img_01.webp",
+    "width": 249,
+    "height": 26
+  },
+  "about/img_02.jpg": {
+    "src": "/img/about/img_02.webp",
+    "width": 500,
+    "height": 400
+  },
+  "about/img_03.jpg": {
+    "src": "/img/about/img_03.webp",
+    "width": 500,
+    "height": 400
+  },
+  "about/mainvisual.jpg": {
+    "src": "/img/about/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "access/img_01.png": {
+    "src": "/img/access/img_01.webp",
+    "width": 576,
+    "height": 330
+  },
+  "access/img_03.jpg": {
+    "src": "/img/access/img_03.webp",
+    "width": 960,
+    "height": 600
+  },
+  "access/mainvisual.jpg": {
+    "src": "/img/access/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "common/footer_bnr_02.jpg": {
+    "src": "/img/common/footer_bnr_02.webp",
+    "width": 960,
+    "height": 170
+  },
+  "common/logo.svg": {
+    "src": "/img/common/logo.svg",
+    "width": 330,
+    "height": 100
+  },
+  "equipment/img_01.jpg": {
+    "src": "/img/equipment/img_01.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_02.jpg": {
+    "src": "/img/equipment/img_02.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_03.jpg": {
+    "src": "/img/equipment/img_03.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_04.jpg": {
+    "src": "/img/equipment/img_04.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_05.jpg": {
+    "src": "/img/equipment/img_05.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_06.jpg": {
+    "src": "/img/equipment/img_06.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_07.jpg": {
+    "src": "/img/equipment/img_07.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_08.jpg": {
+    "src": "/img/equipment/img_08.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_09.jpg": {
+    "src": "/img/equipment/img_09.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_10.jpg": {
+    "src": "/img/equipment/img_10.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_11.jpg": {
+    "src": "/img/equipment/img_11.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_12.jpg": {
+    "src": "/img/equipment/img_12.webp",
+    "width": 600,
+    "height": 400
+  },
+  "equipment/img_13.jpg": {
+    "src": "/img/equipment/img_13.webp",
+    "width": 400,
+    "height": 600
+  },
+  "equipment/img_13_thumb.jpg": {
+    "src": "/img/equipment/img_13_thumb.webp",
+    "width": 600,
+    "height": 391
+  },
+  "equipment/img_14.jpg": {
+    "src": "/img/equipment/img_14.webp",
+    "width": 600,
+    "height": 391
+  },
+  "equipment/mainvisual.jpg": {
+    "src": "/img/equipment/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "home/banner_ubie2.png": {
+    "src": "/img/home/banner_ubie2.webp",
+    "width": 1440,
+    "height": 200
+  },
+  "home/banner_ubie3.png": {
+    "src": "/img/home/banner_ubie3.webp",
+    "width": 1440,
+    "height": 200
+  },
+  "home/banner_ubie3_sp.png": {
+    "src": "/img/home/banner_ubie3_sp.webp",
+    "width": 640,
+    "height": 200
+  },
+  "home/service_img_01.jpg": {
+    "src": "/img/home/service_img_01.webp",
+    "width": 460,
+    "height": 300
+  },
+  "home/service_img_02.jpg": {
+    "src": "/img/home/service_img_02.webp",
+    "width": 460,
+    "height": 300
+  },
+  "home/service_img_03.jpg": {
+    "src": "/img/home/service_img_03.webp",
+    "width": 460,
+    "height": 300
+  },
+  "home/service_img_04.jpg": {
+    "src": "/img/home/service_img_04.webp",
+    "width": 460,
+    "height": 300
+  },
+  "home/service_img_05.jpg": {
+    "src": "/img/home/service_img_05.webp",
+    "width": 460,
+    "height": 300
+  },
+  "home/service_img_06.jpg": {
+    "src": "/img/home/service_img_06.webp",
+    "width": 293,
+    "height": 191
+  },
+  "home/slider_01.jpg": {
+    "src": "/img/home/slider_01.webp",
+    "width": 1360,
+    "height": 600
+  },
+  "home/slider_02.jpg": {
+    "src": "/img/home/slider_02.webp",
+    "width": 1360,
+    "height": 600
+  },
+  "home/slider_03.jpg": {
+    "src": "/img/home/slider_03.webp",
+    "width": 1360,
+    "height": 600
+  },
+  "home/slider_04.jpg": {
+    "src": "/img/home/slider_04.webp",
+    "width": 1360,
+    "height": 600
+  },
+  "home/slider_05.jpg": {
+    "src": "/img/home/slider_05.webp",
+    "width": 1360,
+    "height": 600
+  },
+  "news/250228/img.jpg": {
+    "src": "/img/news/250228/img.webp",
+    "width": 960,
+    "height": 450
+  },
+  "news/mainvisual.jpg": {
+    "src": "/img/news/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "news2/mainvisual.jpg": {
+    "src": "/img/news2/mainvisual.webp",
+    "width": 1600,
+    "height": 647
+  },
+  "news3/mainvisual.jpg": {
+    "src": "/img/news3/mainvisual.webp",
+    "width": 1600,
+    "height": 647
+  },
+  "privacy/mainvisual.jpg": {
+    "src": "/img/privacy/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "report/detail_01/img_01.jpg": {
+    "src": "/img/report/detail_01/img_01.webp",
+    "width": 860,
+    "height": 573
+  },
+  "report/detail_01/img_02.jpg": {
+    "src": "/img/report/detail_01/img_02.webp",
+    "width": 405,
+    "height": 270
+  },
+  "report/detail_01/img_03.jpg": {
+    "src": "/img/report/detail_01/img_03.webp",
+    "width": 405,
+    "height": 270
+  },
+  "report/detail_01/thumb.jpg": {
+    "src": "/img/report/detail_01/thumb.webp",
+    "width": 210,
+    "height": 140
+  },
+  "report/detail_02/img_01.jpg": {
+    "src": "/img/report/detail_02/img_01.webp",
+    "width": 860,
+    "height": 518
+  },
+  "report/detail_02/img_02.jpg": {
+    "src": "/img/report/detail_02/img_02.webp",
+    "width": 405,
+    "height": 284
+  },
+  "report/detail_02/img_03.jpg": {
+    "src": "/img/report/detail_02/img_03.webp",
+    "width": 405,
+    "height": 285
+  },
+  "report/detail_02/thumb.jpg": {
+    "src": "/img/report/detail_02/thumb.webp",
+    "width": 860,
+    "height": 518
+  },
+  "report/detail_03/img_01.jpg": {
+    "src": "/img/report/detail_03/img_01.webp",
+    "width": 860,
+    "height": 420
+  },
+  "report/detail_03/img_02.jpg": {
+    "src": "/img/report/detail_03/img_02.webp",
+    "width": 410,
+    "height": 510
+  },
+  "report/detail_03/img_03.jpg": {
+    "src": "/img/report/detail_03/img_03.webp",
+    "width": 410,
+    "height": 510
+  },
+  "report/detail_03/img_04.jpg": {
+    "src": "/img/report/detail_03/img_04.webp",
+    "width": 410,
+    "height": 510
+  },
+  "report/detail_03/img_05.jpg": {
+    "src": "/img/report/detail_03/img_05.webp",
+    "width": 860,
+    "height": 500
+  },
+  "report/detail_03/thumb.jpg": {
+    "src": "/img/report/detail_03/thumb.webp",
+    "width": 210,
+    "height": 140
+  },
+  "report/detail_04/img_01.jpg": {
+    "src": "/img/report/detail_04/img_01.webp",
+    "width": 860,
+    "height": 644
+  },
+  "report/detail_04/img_02.jpg": {
+    "src": "/img/report/detail_04/img_02.webp",
+    "width": 350,
+    "height": 559
+  },
+  "report/detail_04/img_03.jpg": {
+    "src": "/img/report/detail_04/img_03.webp",
+    "width": 860,
+    "height": 643
+  },
+  "report/detail_04/thumb.jpg": {
+    "src": "/img/report/detail_04/thumb.webp",
+    "width": 210,
+    "height": 140
+  },
+  "report/detail_05/img_01.jpg": {
+    "src": "/img/report/detail_05/img_01.webp",
+    "width": 716,
+    "height": 311
+  },
+  "report/detail_05/img_02.jpg": {
+    "src": "/img/report/detail_05/img_02.webp",
+    "width": 324,
+    "height": 304
+  },
+  "report/detail_05/img_03.jpg": {
+    "src": "/img/report/detail_05/img_03.webp",
+    "width": 469,
+    "height": 353
+  },
+  "report/detail_05/img_04.jpg": {
+    "src": "/img/report/detail_05/img_04.webp",
+    "width": 270,
+    "height": 361
+  },
+  "report/detail_05/img_05.jpg": {
+    "src": "/img/report/detail_05/img_05.webp",
+    "width": 277,
+    "height": 360
+  },
+  "report/detail_05/img_06.jpg": {
+    "src": "/img/report/detail_05/img_06.webp",
+    "width": 310,
+    "height": 432
+  },
+  "report/detail_05/thumb.jpg": {
+    "src": "/img/report/detail_05/thumb.webp",
+    "width": 210,
+    "height": 140
+  },
+  "report/mainvisual.jpg": {
+    "src": "/img/report/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "service/acp-prp/banner_01.png": {
+    "src": "/img/service/acp-prp/banner_01.webp",
+    "width": 1516,
+    "height": 242
+  },
+  "service/acp-prp/img_01.jpg": {
+    "src": "/img/service/acp-prp/img_01.webp",
+    "width": 370,
+    "height": 372
+  },
+  "service/acp-prp/img_02.jpg": {
+    "src": "/img/service/acp-prp/img_02.webp",
+    "width": 370,
+    "height": 372
+  },
+  "service/acp-prp/img_03.jpg": {
+    "src": "/img/service/acp-prp/img_03.webp",
+    "width": 370,
+    "height": 372
+  },
+  "service/acp-prp/img_04.jpg": {
+    "src": "/img/service/acp-prp/img_04.webp",
+    "width": 370,
+    "height": 372
+  },
+  "service/acp-prp/img_05.jpg": {
+    "src": "/img/service/acp-prp/img_05.webp",
+    "width": 600,
+    "height": 528
+  },
+  "service/acp-prp/img_06.jpg": {
+    "src": "/img/service/acp-prp/img_06.webp",
+    "width": 600,
+    "height": 528
+  },
+  "service/acp-prp/img_07.jpg": {
+    "src": "/img/service/acp-prp/img_07.webp",
+    "width": 446,
+    "height": 168
+  },
+  "service/acp-prp/img_08.jpg": {
+    "src": "/img/service/acp-prp/img_08.webp",
+    "width": 446,
+    "height": 168
+  },
+  "service/acp-prp/img_09.jpg": {
+    "src": "/img/service/acp-prp/img_09.webp",
+    "width": 446,
+    "height": 168
+  },
+  "service/acp-prp/mainvisual.jpg": {
+    "src": "/img/service/acp-prp/mainvisual.webp",
+    "width": 1600,
+    "height": 647
+  },
+  "service/course/mainvisual.jpg": {
+    "src": "/img/service/course/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "service/kotsusoshosho/img_01.jpg": {
+    "src": "/img/service/kotsusoshosho/img_01.webp",
+    "width": 960,
+    "height": 550
+  },
+  "service/kotsusoshosho/mainvisual.jpg": {
+    "src": "/img/service/kotsusoshosho/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "service/rehabilitation/img_01.jpg": {
+    "src": "/img/service/rehabilitation/img_01.webp",
+    "width": 960,
+    "height": 550
+  },
+  "service/rehabilitation/img_02.jpg": {
+    "src": "/img/service/rehabilitation/img_02.webp",
+    "width": 500,
+    "height": 340
+  },
+  "service/rehabilitation/img_03.jpg": {
+    "src": "/img/service/rehabilitation/img_03.webp",
+    "width": 500,
+    "height": 340
+  },
+  "service/rehabilitation/img_04.jpg": {
+    "src": "/img/service/rehabilitation/img_04.webp",
+    "width": 500,
+    "height": 340
+  },
+  "service/rehabilitation/mainvisual.jpg": {
+    "src": "/img/service/rehabilitation/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "service/seikeigeka/img_01.jpg": {
+    "src": "/img/service/seikeigeka/img_01.webp",
+    "width": 960,
+    "height": 550
+  },
+  "service/seikeigeka/mainvisual.jpg": {
+    "src": "/img/service/seikeigeka/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  },
+  "service/sports-seitaigeka/img_01.jpg": {
+    "src": "/img/service/sports-seitaigeka/img_01.webp",
+    "width": 960,
+    "height": 550
+  },
+  "service/sports-seitaigeka/mainvisual.jpg": {
+    "src": "/img/service/sports-seitaigeka/mainvisual.webp",
+    "width": 1360,
+    "height": 550
+  }
+}

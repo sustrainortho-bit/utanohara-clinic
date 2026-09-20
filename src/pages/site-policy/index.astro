@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { clinic } from '../../config/site';
+import { url } from '../../lib/site';
+---
+<BaseLayout
+  title="サイトポリシー・医療広告に関する事項"
+  description="うたのはら整形外科クリニックのウェブサイトの運営方針、医療情報の監修、自由診療に関する表示、個人情報の取り扱いについて。"
+  path="/site-policy/"
+  breadcrumbs={[{ label: 'サイトポリシー' }]}
+  draft
+>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="en">Site policy</span>
+      <h1>サイトポリシー・医療広告に関する事項</h1>
+    </div>
+  </div>
+  <div class="article">
+    <h2>当サイトの目的</h2>
+    <p>当サイトは、当院の診療内容や受診方法、一般的な医療情報を、患者さんやご家族が自ら求めて入手できるよう提供することを目的としています。</p>
+    <h2>医療情報の監修</h2>
+    <p>疾患や治療に関する解説ページには、監修した医師の氏名と最終確認日を表示しています。内容は一般的な情報であり、個別の診断・治療に代わるものではありません。症状のある方は、医療機関を受診してください。</p>
+    <h2>自由診療についての表示</h2>
+    <p>保険適用外（自由診療）の治療については、該当ページで、治療の内容、費用、主なリスク・副作用を説明しています。現在は<a href={url('/service/acp-prp.html')}>膝の再生療法（ACP PRP療法）</a>が該当します。ご不明な点は、下記の連絡先へお問い合わせください。</p>
+    <h2>表現についての方針</h2>
+    <p>他の医療機関との比較、誇大な表現、患者さんの体験談やビフォーアフター写真の掲載は行いません。医療広告ガイドラインを踏まえて運営します。</p>
+    <h2>個人情報の取り扱い</h2>
+    <p>当サイトには、お問い合わせフォームなど、個人情報を入力していただく機能はありません。個人情報の取り扱いについては<a href={url('/privacy/')}>プライバシーポリシー</a>をご覧ください。現在、Cookieを利用するアクセス解析ツールは使用していません。</p>
+    <h2>お問い合わせ</h2>
+    <p>{clinic.name}<br />〒{clinic.postalCode}　{clinic.address}<br />電話：<a href={`tel:${clinic.tel}`}>{clinic.tel}</a>（代表）</p>
+  </div>
+</BaseLayout>

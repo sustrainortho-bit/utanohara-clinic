@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { services } from '../../config/site';
+import { showDrafts, url } from '../../lib/site';
+import { img } from '../../lib/images';
+
+const visible = services.filter((s) => !s.draft || showDrafts);
+const general = visible.filter((s) => !s.badge);
+const specialty = visible.filter((s) => s.badge);
+---
+<BaseLayout
+  title="診療内容"
+  description="うたのはら整形外科クリニック（東広島市西条寺家）の診療内容。整形外科一般、リハビリテーション科、スポーツ整形外科、膝の再生療法、骨粗鬆症治療、産前・産後のリハビリ、専門外来のご案内。"
+  path="/service/"
+  breadcrumbs={[{ label: '診療内容' }]}
+>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="en">Service</span>
+      <h1>診療内容</h1>
+    </div>
+  </div>
+  <div class="wrap section">
+    <h2 class="section-title">診療科目</h2>
+    <ul class="service-cards">
+      {general.map((s) => {
+        const photo = s.image ? img(s.image) : null;
+        return (
+          <li>
+            <a class="service-card" href={url(s.href)}>
+              {photo && <img src={photo.src} width={photo.width} height={photo.height} alt="" loading="lazy" />}
+              <div class="body"><h3>{s.label}</h3><p>{s.summary}</p></div>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+    {specialty.length > 0 && (
+      <>
+        <h2 class="section-title u-mtl">専門外来</h2>
+        <ul class="service-cards">
+          {specialty.map((s) => (
+            <li>
+              <a class="service-card" href={url(s.href)}>
+                <div class="body"><span class="badge">{s.badge}</span><h3>{s.label}</h3><p>{s.summary}</p></div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+  </div>
+</BaseLayout>

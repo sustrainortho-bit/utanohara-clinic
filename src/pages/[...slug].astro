@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import LegacyPage from '../components/LegacyPage.astro';
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import pages from '../data/pages.json';
+import { showDrafts } from '../lib/site';
+
+// ディレクトリindex（/about/ など）は各 index.astro から LegacyPage を使う。
+// ここでは既存の個別ページ（/service/*.html、/report/detail_*.html）と、専門外来ページ（/service/<slug>.html）を出力する。
+export async function getStaticPaths() {
+  const legacy = pages
+    .filter((p) => !p.slug.endsWith('/index'))
+    .map((page) => ({ params: { slug: page.slug }, props: { kind: 'legacy' as const, page } }));
+  const specialties = await getCollection('specialties', (e) => showDrafts || e.data.status === 'reviewed');
+  return [
+    ...legacy,
+    ...specialties.map((entry) => ({ params: { slug: `service/${entry.id}` }, props: { kind: 'specialty' as const, entry } })),
+  ];
+}
+
+const props = Astro.props as any;
+const Content = props.kind === 'specialty' ? (await render(props.entry)).Content : null;
+const d = props.kind === 'specialty' ? props.entry.data : null;
+---
+{props.kind === 'legacy' && <LegacyPage page={props.page} />}
+{props.kind === 'specialty' && Content && (
+  <ArticleLayout
+    title={d.title}
+    description={d.description}
+    path={`/service/${props.entry.id}.html`}
+    lead={d.lead}
+    status={d.status}
+    reviewer={d.reviewer}
+    reviewedAt={d.reviewedAt}
+    updatedAt={d.updatedAt}
+    faq={d.faq}
+    references={d.references}
+    eyebrow="Specialty"
+    breadcrumbs={[{ label: '診療内容', href: '/service/' }, { label: d.title }]}
+  >
+    <Content />
+  </ArticleLayout>
+)}

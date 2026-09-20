@@ -1,0 +1,45 @@
+---
+import { clinic, footerNav, features } from '../config/site';
+import { url, showDrafts } from '../lib/site';
+import { img } from '../lib/images';
+import HoursTable from './HoursTable.astro';
+
+const logo = img('common/logo.svg');
+const bus = img('common/footer_bnr_02.jpg');
+const ubie = img('home/banner_ubie2.png');
+const nav = footerNav.filter((n) => (features.diseases || n.href !== '/disease/') && (!n.draft || showDrafts));
+---
+<footer class="site-footer">
+  <div class="wrap footer-main">
+    <div>
+      <p class="footer-logo"><img src={logo.src} width={logo.width} height={logo.height} alt={clinic.name} loading="lazy" /></p>
+      <p class="footer-address">
+        〒{clinic.postalCode}　{clinic.address}<br />
+        Tel.<a href={`tel:${clinic.tel}`}>{clinic.tel}</a>（代表）<br />
+        Tel.<a href={`tel:${clinic.telRehab}`}>{clinic.telRehab}</a>（運動療法予約専用）
+      </p>
+      <dl class="info-list">
+        <dt>受付時間</dt><dd>{clinic.receptionHours}</dd>
+        <dt>診療時間</dt><dd>{clinic.clinicHours}</dd>
+        <dt>休診日</dt><dd>{clinic.closedDays}</dd>
+      </dl>
+      <div class="footer-banners">
+        <a href={url('/access/')}><img src={bus.src} width={bus.width} height={bus.height} alt="患者様に寄り添って、通院をもっと便利に クリニック送迎バス運行中 ※完全予約制です。詳しくはこちらから。" loading="lazy" /></a>
+        <a href={clinic.ubieUrl} target="_blank" rel="noopener noreferrer"><img src={ubie.src} width={ubie.width} height={ubie.height} alt="当院を受診する予定がある方へ　スムーズなご案内のため、事前問診にご協力ください［所要時間5分ほど・こちらから］" loading="lazy" /></a>
+      </div>
+    </div>
+    <div>
+      <HoursTable kind="hours" />
+      <div class="footer-gap"></div>
+      <HoursTable kind="schedule" />
+    </div>
+  </div>
+  <nav class="footer-nav" aria-label="フッターメニュー">
+    <div class="wrap">
+      <ul>
+        {nav.map((n) => <li><a href={url(n.href)}>{n.label}</a></li>)}
+      </ul>
+    </div>
+  </nav>
+  <p class="copyright">© {new Date().getFullYear()} {clinic.name}</p>
+</footer>

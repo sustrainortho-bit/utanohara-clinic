@@ -1,0 +1,91 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Crumb } from './BaseLayout.astro';
+import { clinic } from '../config/site';
+import { SITE_NAME, absUrl, url } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  lead: string[];
+  status: 'draft' | 'reviewed';
+  reviewer: string | null;
+  reviewedAt: Date | null;
+  updatedAt: Date;
+  faq: { q: string; a: string }[];
+  references: string[];
+  breadcrumbs: Crumb[];
+  eyebrow?: string;
+}
+const p = Astro.props;
+const fmt = (d: Date) => `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+
+const webPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: p.title,
+  description: p.description,
+  url: absUrl(p.path),
+  inLanguage: 'ja',
+  dateModified: iso(p.updatedAt),
+  ...(p.reviewedAt && { lastReviewed: iso(p.reviewedAt) }),
+  ...(p.reviewer && { reviewedBy: { '@type': 'Physician', name: p.reviewer } }),
+  publisher: { '@type': 'MedicalClinic', '@id': absUrl('/#clinic'), name: SITE_NAME },
+};
+const faqLd = p.faq.length > 0 && {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: p.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') } })),
+};
+---
+<BaseLayout
+  title={p.title}
+  description={p.description}
+  path={p.path}
+  breadcrumbs={p.breadcrumbs}
+  draft={p.status === 'draft'}
+  jsonLd={[webPageLd, faqLd].filter(Boolean) as Record<string, unknown>[]}
+>
+  <div class="page-head">
+    <div class="wrap">
+      {p.eyebrow && <span class="en">{p.eyebrow}</span>}
+      <h1>{p.title}</h1>
+    </div>
+  </div>
+  <article class="article">
+    <div class="lead-box" aria-label="要点">
+      {p.lead.map((l) => <p>{l}</p>)}
+    </div>
+    <slot />
+    {p.faq.length > 0 && (
+      <section aria-labelledby="faq-title">
+        <h2 id="faq-title">よくあるご質問</h2>
+        <dl class="faq">
+          {p.faq.map((f) => (
+            <>
+              <dt>{f.q}</dt>
+              <dd set:html={f.a} />
+            </>
+          ))}
+        </dl>
+      </section>
+    )}
+    {p.references.length > 0 && (
+      <section aria-labelledby="ref-title">
+        <h2 id="ref-title">参考文献</h2>
+        <ul>{p.references.map((r) => <li set:html={r} />)}</ul>
+      </section>
+    )}
+    <p class="notice">
+      この記事は一般的な情報をまとめたものであり、個別の診断・治療に代わるものではありません。
+      症状のある方は、医療機関を受診してご相談ください。
+    </p>
+    <p class="article-meta">
+      監修：{p.reviewer ? `${p.reviewer}（${clinic.name}）` : '担当医の確認前（下書き）'}<br />
+      最終確認日：{p.reviewedAt ? fmt(p.reviewedAt) : '未確認'}／最終更新日：{fmt(p.updatedAt)}<br />
+      {clinic.name}｜{clinic.address}｜<a href={`tel:${clinic.tel}`}>{clinic.tel}</a>
+    </p>
+  </article>
+</BaseLayout>

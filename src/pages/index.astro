@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HoursTable from '../components/HoursTable.astro';
+import { clinic, services, doctors } from '../config/site';
+import { showDrafts, url } from '../lib/site';
+import { img } from '../lib/images';
+import { clinicJsonLd } from '../lib/clinic-ld';
+import news from '../data/news.json';
+
+const hero = img('home/slider_01.jpg');
+const ubie = img('home/banner_ubie3.png');
+const ubieSp = img('home/banner_ubie3_sp.png');
+const visibleServices = services.filter((s) => !s.draft || showDrafts);
+
+const latest = (key: 'news' | 'news2' | 'news3') => news[key].items.slice(0, 3);
+const closure = news.news2.items[0];
+---
+<BaseLayout
+  isHome
+  title="うたのはら整形外科クリニック"
+  description="東広島市西条寺家の整形外科・リハビリテーション科・スポーツ整形外科。お子様からご年配の方まで、わかりやすい説明と丁寧な診察を心がけています。事前問診・無料送迎バス（完全予約制）あり。"
+  path="/"
+  jsonLd={[clinicJsonLd()]}
+>
+  <section class="hero" aria-label="クリニックの外観">
+    <img src={hero.src} width={hero.width} height={hero.height} alt="うたのはら整形外科クリニックの外観と駐車場" fetchpriority="high" />
+    <div class="hero-copy">
+      <div class="wrap">
+        <p>地域のみなさまにとって身近なクリニックに。
+          <small>お子様からご年配まで、整形外科のことはお任せください。</small>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap quick">
+    <section aria-labelledby="q-hours">
+      <h2 id="q-hours">診療時間</h2>
+      <p class="big">午前 9:00〜13:00<br />午後 15:00〜19:00</p>
+      <small>土曜午後は14:30〜17:30／休診日：{clinic.closedDays}</small>
+    </section>
+    <section aria-labelledby="q-tel">
+      <h2 id="q-tel">お電話</h2>
+      <p class="big"><a href={`tel:${clinic.tel}`}>{clinic.tel}</a></p>
+      <small>運動療法予約専用：<a href={`tel:${clinic.telRehab}`}>{clinic.telRehab}</a></small>
+    </section>
+    <section aria-labelledby="q-info">
+      <h2 id="q-info">休診のお知らせ</h2>
+      <p class="big"><a href={url('/news2/')}>最新の休診案内</a></p>
+      <small>{closure.date}　{closure.title}</small>
+    </section>
+  </div>
+
+  <section class="section" aria-labelledby="intro-title">
+    <div class="wrap intro">
+      <h2 id="intro-title" class="visually-hidden">クリニックのご紹介</h2>
+      <p class="lead">2018年4月に東広島市西条寺家に開院しました、<br />うたのはら整形外科クリニックです。</p>
+      <p>整形外科一般・リハビリテーション科・スポーツ整形外科の診療を行い、地域医療に貢献してまいります。<br />
+        みなさまにとって身近なクリニックになれるよう努力してまいりますので、今後ともよろしくお願いいたします。</p>
+      <p>当院ではご来院前に事前問診へのご回答をお願いしております。<br />
+        ご来院後の受付がスムーズになるため、以下のバナーよりぜひご協力ください。</p>
+      <a class="banner-link" href={clinic.ubieUrl} target="_blank" rel="noopener noreferrer">
+        <picture>
+          <source srcset={ubieSp.src} media="(max-width: 767px)" />
+          <img src={ubie.src} width={ubie.width} height={ubie.height} alt="当院を受診する予定がある方へ　スムーズなご案内のため、事前問診にご協力ください［所要時間5分ほど・こちらから］" loading="lazy" />
+        </picture>
+      </a>
+    </div>
+  </section>
+
+  <section class="section soft" aria-labelledby="service-title">
+    <div class="wrap">
+      <h2 id="service-title" class="section-title"><span class="en">Service</span>診療内容</h2>
+      <ul class="service-cards">
+        {visibleServices.map((s) => {
+          const photo = s.image ? img(s.image) : null;
+          return (
+            <li>
+              <a class="service-card" href={url(s.href)}>
+                {photo && <img src={photo.src} width={photo.width} height={photo.height} alt="" loading="lazy" />}
+                <div class="body">
+                  {s.badge && <span class="badge">{s.badge}</span>}
+                  <h3>{s.label}</h3>
+                  <p>{s.summary}</p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="news-title">
+    <div class="wrap news-tabs">
+      <h2 id="news-title" class="section-title"><span class="en">News</span>お知らせ</h2>
+      {([['news', '/news/', 'お知らせ'], ['news2', '/news2/', '休診案内'], ['news3', '/news3/', '採用情報']] as const).map(([key, href, label]) => (
+        <div>
+          <h3>{label}</h3>
+          <ul class="news-titles">
+            {latest(key).map((n) => <li><span class="date">{n.date}</span>{n.title}</li>)}
+          </ul>
+          <p class="news-more"><a href={url(href)}>{label}の一覧を見る</a></p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section soft" aria-labelledby="doctor-title">
+    <div class="wrap">
+      <h2 id="doctor-title" class="section-title"><span class="en">Doctors</span>医師のご紹介</h2>
+      <ul class="card-grid">
+        {doctors.map((d) => (
+          <li>
+            <a href={url('/doctors/')}>
+              <small>{d.role}</small>{d.name}
+              <small>{d.qualifications[1]}</small>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="u-tac"><a class="btn btn-ghost" href={url('/doctors/')}>医師の紹介を見る</a></p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="access-title">
+    <div class="wrap">
+      <h2 id="access-title" class="section-title"><span class="en">Access</span>アクセス・診療時間</h2>
+      <div class="access-info">
+        <div>
+          <HoursTable kind="hours" />
+        </div>
+        <div>
+          <dl class="info-list">
+            <dt>所在地</dt><dd>〒{clinic.postalCode}<br />{clinic.address}</dd>
+            <dt>電話番号</dt><dd><a href={`tel:${clinic.tel}`}>{clinic.tel}</a></dd>
+            <dt>受付時間</dt><dd>{clinic.receptionHours}</dd>
+            <dt>休診日</dt><dd>{clinic.closedDays}</dd>
+          </dl>
+          <p class="u-mtl"><a class="btn" href={clinic.mapUrl} target="_blank" rel="noopener noreferrer">Googleマップで見る</a>　<a class="btn btn-ghost" href={url('/access/')}>アクセスの詳細</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

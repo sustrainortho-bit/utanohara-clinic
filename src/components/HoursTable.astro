@@ -1,0 +1,45 @@
+---
+import { days, hoursTable, scheduleTable, clinic } from '../config/site';
+
+interface Props { kind: 'hours' | 'schedule'; caption?: string }
+const { kind, caption } = Astro.props;
+const shown = days.slice(0, kind === 'hours' ? 7 : 6);
+const rows = [
+  { label: '午前', key: 'am' as const },
+  { label: '午後', key: 'pm' as const },
+];
+---
+<div class="table-scroll">
+  <table class:list={['hours', kind === 'schedule' && 'schedule']}>
+    <caption>{caption ?? (kind === 'hours' ? '診療時間' : '診療担当表')}</caption>
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden">時間帯</span></th>
+        {shown.map((d) => <th scope="col">{d}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <th scope="row">{r.label}</th>
+          {kind === 'hours'
+            ? hoursTable[r.key].map((c) => (
+                <td class:list={[c === '×' && 'off']}>
+                  <span aria-hidden="true">{c}</span>
+                  <span class="visually-hidden">{c === '●' ? '診療あり' : c === '▲' ? '診療あり（時間が異なります）' : '休診'}</span>
+                </td>
+              ))
+            : scheduleTable[r.key].map((lines) => (
+                <td>{lines.map((l, i) => <>{i > 0 && <br />}{l}</>)}</td>
+              ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+{kind === 'hours' && (
+  <p class="hours-note">
+    ●…診療　▲…土曜午後は時間が異なります（受付14:00〜17:00／診療14:30〜17:30）　×…休診<br />
+    休診日：{clinic.closedDays}
+  </p>
+)}
