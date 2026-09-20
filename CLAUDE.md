@@ -9,6 +9,7 @@ npm install
 npm run dev        # 開発サーバー
 npm run build      # dist/ に出力（環境変数は astro.config.mjs 冒頭を参照）
 npm run preview    # dist/ をローカル確認（既定: http://localhost:4321/utanohara-clinic/）
+node scripts/check-links.mjs   # ビルド後: リンク切れ・alt欠落・h1の数を検査（公開前に必ず実行）
 ```
 
 - 確認用（GitHub Pages）は `NOINDEX=true`（既定）＝全ページ `noindex`、`robots.txt` は全面拒否。本番は `NOINDEX=false SITE_URL=https://www.utanohara.com BASE_PATH= PRODUCTION=true` でビルドする。
