@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { showDrafts } from '../../lib/site';
+
+// 疾患解説（src/content/diseases）。未監修（draft）は本番ビルドに含めない。
+export async function getStaticPaths() {
+  const entries = await getCollection('diseases', (e) => showDrafts || e.data.status === 'reviewed');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<ArticleLayout
+  title={d.title}
+  description={d.description}
+  path={`/disease/${entry.id}.html`}
+  lead={d.lead}
+  status={d.status}
+  reviewer={d.reviewer}
+  reviewedAt={d.reviewedAt}
+  updatedAt={d.updatedAt}
+  faq={d.faq}
+  references={d.references}
+  eyebrow={d.category ?? 'Disease'}
+  breadcrumbs={[{ label: '疾患解説', href: '/disease/' }, { label: d.title }]}
+>
+  <Content />
+</ArticleLayout>

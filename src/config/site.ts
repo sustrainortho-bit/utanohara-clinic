@@ -161,8 +161,6 @@ export const footerNav: NavItem[] = [
   { label: 'サイトポリシー・医療広告に関する事項', href: '/site-policy/' },
 ];
 
-/** 公開状況のフラグ（内容が揃ったら true にする） */
-export const features = {
-  /** 疾患解説ページ（一覧・各疾患）を公開してナビに出すか */
-  diseases: false,
-};
+
+/** 疾患解説の部位カテゴリ（一覧ページの表示順） */
+export const diseaseCategories = ['肩', '肘', '手・手首', '首', '腰', '股関節', '膝', '足', '骨・全身', 'スポーツ障害', '小児'] as const;

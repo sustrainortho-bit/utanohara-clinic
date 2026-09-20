@@ -1,12 +1,14 @@
 ---
-import { clinic, mainNav, features } from '../config/site';
+import { getCollection } from 'astro:content';
+import { clinic, mainNav } from '../config/site';
 import { url, showDrafts } from '../lib/site';
 import { img } from '../lib/images';
 
 const logo = img('common/logo.svg');
 const visible = <T extends { draft?: boolean }>(list: T[]) => list.filter((n) => !n.draft || showDrafts);
+const hasDiseases = (await getCollection('diseases', (e) => showDrafts || e.data.status === 'reviewed')).length > 0;
 const nav = mainNav
-  .filter((n) => features.diseases || n.href !== '/disease/')
+  .filter((n) => hasDiseases || n.href !== '/disease/')
   .map((n) => ({ ...n, children: n.children && visible(n.children) }));
 ---
 <header class="site-header">

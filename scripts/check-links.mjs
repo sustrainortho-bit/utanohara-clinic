@@ -10,8 +10,9 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e
 const htmlFiles = walk(DIST).filter((f) => f.endsWith('.html'));
 
 const problems = [];
-const resolveTarget = (href) => {
+const resolveTarget = (href, fromRel) => {
   let p = href.split('#')[0].split('?')[0];
+  if (p && !p.startsWith('/')) p = path.posix.resolve('/', path.posix.dirname(fromRel), p);
   if (BASE && p.startsWith(BASE)) p = p.slice(BASE.length);
   if (!p.startsWith('/')) return null;
   let file = path.join(DIST, p);
@@ -34,7 +35,7 @@ for (const f of htmlFiles) {
       if (href.length > 1 && $(`[id="${href.slice(1)}"]`).length === 0) problems.push(`${rel}: アンカー先なし ${href}`);
       return;
     }
-    const target = resolveTarget(href);
+    const target = resolveTarget(href, rel);
     if (target === undefined) problems.push(`${rel}: リンク切れ ${href}`);
     else if (target && href.includes('#')) {
       const id = href.split('#')[1];

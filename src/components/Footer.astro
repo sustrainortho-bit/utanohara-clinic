@@ -1,5 +1,6 @@
 ---
-import { clinic, footerNav, features } from '../config/site';
+import { getCollection } from 'astro:content';
+import { clinic, footerNav } from '../config/site';
 import { url, showDrafts } from '../lib/site';
 import { img } from '../lib/images';
 import HoursTable from './HoursTable.astro';
@@ -7,7 +8,8 @@ import HoursTable from './HoursTable.astro';
 const logo = img('common/logo.svg');
 const bus = img('common/footer_bnr_02.jpg');
 const ubie = img('home/banner_ubie2.png');
-const nav = footerNav.filter((n) => (features.diseases || n.href !== '/disease/') && (!n.draft || showDrafts));
+const hasDiseases = (await getCollection('diseases', (e) => showDrafts || e.data.status === 'reviewed')).length > 0;
+const nav = footerNav.filter((n) => (hasDiseases || n.href !== '/disease/') && (!n.draft || showDrafts));
 ---
 <footer class="site-footer">
   <div class="wrap footer-main">

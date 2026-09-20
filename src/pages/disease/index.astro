@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { diseaseCategories } from '../../config/site';
+import { showDrafts, url } from '../../lib/site';
+
+const entries = (await getCollection('diseases', (e) => showDrafts || e.data.status === 'reviewed')).sort((a, b) => a.data.order - b.data.order);
+const groups = diseaseCategories
+  .map((c) => ({ name: c, items: entries.filter((e) => e.data.category === c) }))
+  .filter((g) => g.items.length > 0);
+---
+<BaseLayout
+  title="疾患解説"
+  description="整形外科でみられる主な病気について、症状・原因・検査・治療の選択肢をわかりやすく解説します。うたのはら整形外科クリニック（東広島市西条寺家）。"
+  path="/disease/"
+  breadcrumbs={[{ label: '疾患解説' }]}
+  draft={entries.some((e) => e.data.status === 'draft')}
+>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="en">Disease</span>
+      <h1>疾患解説</h1>
+    </div>
+  </div>
+  <div class="wrap section">
+    <p>整形外科でみられる主な病気について、症状・原因・検査・治療の選択肢をまとめています。各ページの終わりに、監修した医師と最終確認日を表示しています。</p>
+    {groups.map((g) => (
+      <section aria-labelledby={`cat-${g.name}`}>
+        <h2 id={`cat-${g.name}`} class="section-title u-mtl">{g.name}</h2>
+        <ul class="card-grid">
+          {g.items.map((e) => (
+            <li>
+              <a href={url(`/disease/${e.id}.html`)}>
+                {e.data.title.split('｜')[0]}
+                <small>{e.data.lead[0]}</small>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
