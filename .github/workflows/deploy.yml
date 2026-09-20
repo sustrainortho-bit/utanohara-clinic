@@ -23,7 +23,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm audit --audit-level=high
-      - name: Build (確認用: 検索エンジンに載せない)
+      - name: "Build (確認用・検索エンジンに載せない)"
         run: npm run build
         env:
           SITE_URL: https://sustrainortho-bit.github.io
